@@ -15,6 +15,7 @@ use App\Http\Controllers\SpaFrontend\Student\Course\CourseNotePage\ParentPage\Co
 use App\Http\Controllers\SpaFrontend\Student\Course\CourseAssignmentPage\ParentPage\CourseAssignmentParent;
 use App\Http\Controllers\SpaFrontend\Student\Profile\ProfilePage\ParentPage\ProfileParent;
 use App\Http\Controllers\SpaFrontend\Student\Course\EnrolledCourses;
+use App\Http\Controllers\SpaFrontend\Student\Course\TypeWiseContents\ShowTypeWiseContents;
 
 Route::get('/sign-up', [FrontendController::class, 'signup'])->name('signup');
 Route::get('/sign-in', [FrontendController::class, 'signin'])->name('signin');
@@ -48,5 +49,9 @@ Route::middleware([
     Route::get('/courses/notes', CourseNoteParent::class)->name('courses.notes');
     Route::get('/courses/assignment', CourseAssignmentParent::class)->name('courses.assignments');
 
-    Route::get('/student/courses/{type?}', EnrolledCourses::class)->name('student.get-enrolled-courses');
+    Route::name('student.')->prefix('student')->group(function (){
+        Route::get('/courses/{type?}', EnrolledCourses::class)->name('get-enrolled-courses');
+        Route::get('/{contentType}/{slug}', ShowTypeWiseContents::class)->name('show-type-wise-contents');
+    });
+
 });

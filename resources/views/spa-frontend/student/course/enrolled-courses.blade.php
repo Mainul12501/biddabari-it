@@ -8,12 +8,14 @@
             <div class="row mt-5">
                 @foreach($orders as $key => $order)
                     <div class="col-md-4 col-sm-6">
-                        <div class="card">
-                            <img src="" alt="" class="card-img-top" style="height: 100px" />
-                            <div class="card-body">
-                                <h3 class="text-center">Course Name</h3>
+                        <a href="{{ route('student.show-type-wise-contents', ['contentType' => $contentType ?? 'videos', 'slug' => $order->course->slug]) }}" wire:navigate >
+                            <div class="card">
+                                <img src="{{ asset(file_exists($order->course->banner) ? $order->course->banner : 'frontend/logo/biddabari-card-logo-350x210.jpg') }}" alt="" class="card-img-top" style="height: 160px" />
+                                <div class="card-body">
+                                    <h3 class="text-center">{{ $order->course->title ?? 'Course Name' }}</h3>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>
