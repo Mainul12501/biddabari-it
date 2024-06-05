@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\Frontend\Pages\BasicViewController;
+use App\Http\Controllers\SpaFrontend\Checkout\CheckoutPage;
+use App\Http\Controllers\Frontend\Checkout\CheckoutController;
 
 use App\Http\Controllers\SpaFrontend\HomePage\ParentPage\HomeParent;
 use App\Http\Controllers\SpaFrontend\CoursePage\ParentPage\CourseParent;
@@ -16,6 +19,13 @@ use App\Http\Controllers\SpaFrontend\Student\Course\CourseAssignmentPage\ParentP
 use App\Http\Controllers\SpaFrontend\Student\Profile\ProfilePage\ParentPage\ProfileParent;
 use App\Http\Controllers\SpaFrontend\Student\Course\EnrolledCourses;
 use App\Http\Controllers\SpaFrontend\Student\Course\TypeWiseContents\ShowTypeWiseContents;
+use App\Http\Controllers\SpaFrontend\Student\Course\ContentDetails\ContentDetails;
+
+//payment gateway routes
+Route::post('sslcommerz/success',[CheckoutController::class, 'paymentSuccess'])->name('payment.success');
+Route::post('sslcommerz/failure',[CheckoutController::class, 'paymentFailure'])->name('payment.failure');
+Route::post('sslcommerz/cancel',[CheckoutController::class, 'paymentCancel'])->name('payment.cancel');
+Route::post('sslcommerz/ipn',[CheckoutController::class, 'ipn'])->name('payment.ipn');
 
 Route::get('/sign-up', [FrontendController::class, 'signup'])->name('signup');
 Route::get('/sign-in', [FrontendController::class, 'signin'])->name('signin');
@@ -27,6 +37,9 @@ Route::middleware('previousUrlMiddleware')->group(function (){
     Route::get('/course-details/{id}/{slug?}', CourseDetailsParent::class)->name('course.details');
     Route::get('/about-us', AboutUsParent::class)->name('about.us');
     Route::get('/contact', ContactParent::class)->name('contact');
+
+    Route::get('/checkout-course/{type}/{slug}', CheckoutPage::class)->name('spa.checkout');
+
 });
 
 
@@ -52,6 +65,7 @@ Route::middleware([
     Route::name('student.')->prefix('student')->group(function (){
         Route::get('/courses/{type?}', EnrolledCourses::class)->name('get-enrolled-courses');
         Route::get('/{contentType}/{slug}', ShowTypeWiseContents::class)->name('show-type-wise-contents');
+        Route::get('/view/{contentType}/{contentId}/{slug?}', ContentDetails::class)->name('view-type-wise-content');
     });
 
 });

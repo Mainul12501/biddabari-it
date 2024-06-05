@@ -13,6 +13,7 @@ use App\Models\Backend\Course\CourseSection;
 use App\Models\Backend\Course\CourseExamResult;
 use App\Models\Backend\Course\CourseSectionContent;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AdminViewController extends Controller
 {
@@ -93,4 +94,6 @@ class AdminViewController extends Controller
             return response()->json($exception->getMessage());
         }
     }
+
+
 }

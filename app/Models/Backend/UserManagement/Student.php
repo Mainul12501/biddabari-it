@@ -88,6 +88,24 @@ class Student extends Model
         ]);
     }
 
+    public static function createStudentAfterPayment($request, $user)
+    {
+        $existStudent = Student::where('user_id', $user->id)->first();
+        if (empty($existStudent))
+        {
+            $student    = new Student();
+            $student->user_id    = $user->id;
+            $student->first_name    = $request->name;
+            $student->mobile    = $request->mobile;
+            $student->status    = 1;
+            $student->save();
+            return $student;
+        } else {
+            return $existStudent;
+        }
+
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

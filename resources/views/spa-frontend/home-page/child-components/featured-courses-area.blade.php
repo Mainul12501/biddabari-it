@@ -50,7 +50,12 @@
                                     <div class="crs_price"><h2><span class="currency">BDT &nbsp;</span><span class="theme-cl">{{ $featuredCourse->price }}</span></h2></div>
                                 </div>
                                 <div class="crs_fl_last">
-                                    <div class="crs_linkview"><a href="{{route('course.details', ['id' => $featuredCourse->id, 'slug' => $featuredCourse->slug])}}" class="btn btn_view_detail theme-bg text-light">Enroll Now</a></div>
+                                    @if(strtotime($featuredCourse->admission_last_date) > strtotime(currentDateTimeYmdHi()))
+{{--                                        <div class="crs_linkview"><a href="{{route('course.details', ['id' => $featuredCourse->id, 'slug' => $featuredCourse->slug])}}" wire:navigate class="btn btn_view_detail theme-bg text-light">Enroll Now</a></div>--}}
+                                        <div class="crs_linkview"><a href="{{route('spa.checkout', ['type' => 'course', 'slug' => $featuredCourse->slug])}}" class="btn btn_view_detail theme-bg text-light">Enroll Now</a></div>
+                                    @else
+                                        <div class="crs_linkview"><a href="javascript:void(0)" wire:navigate class="btn btn_view_detail theme-bg text-light">Time Expired </a></div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

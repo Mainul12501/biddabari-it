@@ -26,9 +26,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         Paginator::useBootstrapFive();
-        View::composer(['frontend.includes.header'], function ($view){
-            $view->with('scrollingNotices', Notice::where(['status'=> 1, 'type' => 'scroll'])->take(6)->get());
-        });
+//        View::composer(['frontend.includes.header'], function ($view){
+//            $view->with('scrollingNotices', Notice::where(['status'=> 1, 'type' => 'scroll'])->take(6)->get());
+//        });
         View::share('siteSettings', SiteSetting::first());
     }
 }

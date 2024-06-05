@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\UserManagement\RegularUser\UserController;
 use App\Http\Controllers\Backend\AdditionalFeatureManagement\Affiliation\AffiliationController;
 
 use App\Http\Controllers\SqlScriptController;
+use App\Http\Controllers\Backend\BkashController;
 
 
 //sarowar sql script start
@@ -37,6 +38,14 @@ Route::post('sslcommerz/success',[CheckoutController::class, 'paymentSuccess'])-
 Route::post('sslcommerz/failure',[CheckoutController::class, 'paymentFailure'])->name('payment.failure');
 Route::post('sslcommerz/cancel',[CheckoutController::class, 'paymentCancel'])->name('payment.cancel');
 Route::post('sslcommerz/ipn',[CheckoutController::class, 'ipn'])->name('payment.ipn');
+
+
+Route::post('/common-order/{model_id}', [CheckoutController::class, 'commonOrder'])->name('common-order');
+
+
+Route::post('create/bkash',[BkashController::class,'createPayment'])->name('bkash-create-payment');
+Route::get('/bkash/pay',[BkashController::class,'callBack'])->name('excute_payment');
+//Route::post('/bkash/callback', [App\Http\Controllers\BkashTokenizePaymentController::class,'callBack'])->name('bkash-callBack');
 
 Route::as('front.')->group(function (){
 //     Route::middleware('previousUrlMiddleware')->group(function (){

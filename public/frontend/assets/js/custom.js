@@ -202,6 +202,35 @@
         },
         navText: ["<i class='flaticon-left-arrow'></i>", "<i class='flaticon-chevron'></i>"],
     })
+    
+    
+    
+    
+    // $('.course-slider-one').owlCarousel({
+    //     loop: true,
+    //     margin: 30,
+    //     autoHeight: true,
+    //     nav: true,
+    //     dots: false,
+    //     autoplay: true,
+    //     autoplayHoverPause: true,
+    //     responsive: {
+    //         0: {
+    //             items: 1,
+    //         },
+    //         768: {
+    //             items: 1,
+    //         },
+    //         1200: {
+    //             items: 1,
+    //         }
+    //     },
+    //     navText: ["<i class='flaticon-left-arrow'></i>", "<i class='flaticon-chevron'></i>"],
+    // })
+    
+    
+    
+    
     $('.course-slider-two').owlCarousel({
         loop: true,
         margin: 30,
@@ -219,6 +248,27 @@
             },
             1200: {
                 items: 3,
+            }
+        },
+        navText: ["<i class='flaticon-left-arrow'></i>", "<i class='flaticon-chevron'></i>"],
+    })
+    $('.course-slider-two-one').owlCarousel({
+        loop: true,
+        margin: 30,
+        autoHeight: true,
+        nav: true,
+        dots: false,
+        autoplay: true,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            768: {
+                items: 1,
+            },
+            1200: {
+                items: 1,
             }
         },
         navText: ["<i class='flaticon-left-arrow'></i>", "<i class='flaticon-chevron'></i>"],

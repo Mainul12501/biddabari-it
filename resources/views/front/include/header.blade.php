@@ -26,7 +26,7 @@
 
 				<ul class="nav-menu nav-menu-social align-to-right">
                     @if(auth()->check())
-                         <li><a href="javascript:void(0)">User<span class="submenu-indicator"></span></a>
+                         <li><a href="javascript:void(0)">{{ auth()->user()->name ?? 'User' }}<span class="submenu-indicator"></span></a>
 						<ul class="nav-dropdown nav-submenu">
 							<li><a href="{{ route('student.dashboard') }}" wire:navigate >Dashboard</a></li>
                             <li>
