@@ -10,11 +10,11 @@
             @foreach($courseSectionContents as $key => $courseSectionContent)
 
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 " wire:click="showContent({{ $courseSectionContent->id }}, {{ $contentType }})">
-                    <a class="" href="{{--{{ route('student.view-type-wise-content', ['contentType' => $contentType, 'slug' => str_replace(' ', '-', $courseSectionContent->title), 'contentId' => $courseSectionContent->id]) }}--}}javascript:void(0)"  >
+                    <a class="" href="{{ route('student.view-type-wise-content', ['contentType' => $contentType, 'slug' => str_replace(' ', '-', $courseSectionContent->title), 'contentId' => $courseSectionContent->id]) }}"  >
                         <div class="dashboard_stats_wrap">
                             @if($contentType == 'videos')
                                 <div class="playlist_video">
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/NjqjVdVJX1g?si=tTlVUhw_Wgk8b1J6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                    <img src="https://cdn-icons-png.freepik.com/256/1179/1179120.png" alt="video icon" style="height: 200px" class="w-100">
                                 </div>
                             @elseif($contentType == 'pdfs')
                                 <div class=" dashboard_pdf">

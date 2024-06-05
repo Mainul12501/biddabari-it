@@ -180,6 +180,9 @@
 <!-- This page plugins -->
 <!-- ============================================================== -->
 
+
+{{--content show plugins--}}
+
 @livewireScripts
 
 
